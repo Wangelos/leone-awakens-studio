@@ -10,9 +10,14 @@ var OWN = [
     desc: "Coupled oscillators in three.js. Cut the coupling and they never meet." }
 ];
 
-/* the only landscape piece, so it gets its own frame rather than a cell
-   in a sheet built for 9:16 */
+/* the pieces that are not 9:16, so they get their own row rather than a cell
+   in a sheet built for vertical. The square and the two 16:9 frames are sized
+   to come out the same height. */
 var WIDE = [
+  { file: "esplosione", ratio: "s", title: "Nuclear explosion in vacuum",
+    desc: "Camera shake measured from real footage, not invented." },
+  { file: "triangolo", ratio: "h", title: "Thought, emotion, action",
+    desc: "Plasma caged inside the shape, then the shape corrodes." },
   { file: "gag", ratio: "h", title: "BIT hits the target",
     desc: "Four seconds of character timing, in the studio's own 16:9 house style. Silent by design." }
 ];

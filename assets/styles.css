@@ -76,6 +76,7 @@ h1{font-size:clamp(38px,6.1vw,68px);letter-spacing:-.018em;max-width:15ch;font-w
 .frame{position:relative;background:#000;border:1px solid var(--brace);overflow:hidden}
 .frame-v{aspect-ratio:9/16}
 .frame-h{aspect-ratio:16/9}
+.frame-s{aspect-ratio:1/1}
 .frame video,.frame img,.frame iframe{width:100%;height:100%;object-fit:cover;border:0;display:block}
 .hero-frame .frame-v{max-width:330px;margin-inline:auto}
 
@@ -91,7 +92,10 @@ h1{font-size:clamp(38px,6.1vw,68px);letter-spacing:-.018em;max-width:15ch;font-w
 /* ---------- contact sheet ---------- */
 .sheet{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(14px,2vw,26px);margin-top:24px}
 .sheet-3{grid-template-columns:repeat(3,minmax(0,1fr));max-width:880px}
-.solo{margin-top:clamp(20px,2.6vw,32px);max-width:530px}
+/* la riga dei formati NON verticali: un quadrato e due 16:9. Le colonne stanno
+   fra loro come .5625 : 1 : 1, cosi' i tre riquadri escono della STESSA altezza */
+.solo{margin-top:clamp(20px,2.6vw,32px);display:grid;gap:clamp(14px,2vw,26px);
+  grid-template-columns:minmax(0,.5625fr) minmax(0,1fr) minmax(0,1fr)}
 .item{margin:0}
 .item .cap-t{margin-top:12px;font-size:14.5px;font-weight:600;line-height:1.34}
 .item .cap-d{margin-top:5px;font-size:13px;color:var(--cenere);line-height:1.48}
@@ -174,6 +178,7 @@ footer{
   .topbar nav{gap:15px;font-size:13.5px}
   .wordmark{font-size:15px}
   .sheet{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .solo{grid-template-columns:1fr}
   .row{grid-template-columns:1fr;gap:12px}
   .row-price{text-align:left;align-items:flex-start}
   .extra{max-width:40ch}
