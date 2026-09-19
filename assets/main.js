@@ -44,8 +44,10 @@ var MADE = [
     desc: "Camera shake measured off real footage rather than invented." },
   { file: "triangolo", ratio: "16", title: "Thought, emotion, action",
     desc: "Plasma caged inside the shape, then the shape corrodes." },
-  { file: "gag", ratio: "16", title: "BIT hits the target",
-    desc: "Four seconds of character timing, in our own style. Silent by design." }
+  { file: "vortice", ratio: "16", title: "Thought, emotion, action — the vortex cut",
+    desc: "The second take on the triangle: it accelerates until the shape reads as a disc, then blows out in violet. Written in code." },
+  { file: "orbit", ratio: "16", title: "ORBIT — a five-second brand bit",
+    desc: "A brand we invented so we would have one to animate: a roasted planet drops into place as the O of the wordmark." }
 ];
 
 var YT = [

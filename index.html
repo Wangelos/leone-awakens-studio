@@ -12,11 +12,44 @@
 <meta name="theme-color" content="#090A04">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/archivo-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="assets/styles.css?v=8">
+<link rel="stylesheet" href="assets/styles.css?v=10">
+<!-- three.js per Gargantua. La stessa versione e gli stessi hash del file
+     definitivo di Animazioni3d. Il worker non vede questa mappa: fascia.js
+     gliene passa l'indirizzo, cosi' la versione si cambia solo qui. -->
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js"
+  },
+  "integrity": {
+    "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.module.js": "sha384-8FCZ1eVO6it4+pbec2aDtnTrwjWXZLJRC+MAGCIPDgsYnUrl/E0A2YlF8ioMKI/J",
+    "https://cdn.jsdelivr.net/npm/three@0.184.0/build/three.core.js": "sha384-dw2ooPewaEIrAgl6oFDBmmBWCE9oW9LxRGcfwZ0hLvEprzo202wXl7vCYHRlSnOT"
+  }
+}
+</script>
 </head>
 <body>
 
 <a class="skip" href="#loops">Skip to the loops</a>
+
+<!-- ============================ GARGANTUA ============================
+     Ordine di Angelo, 19/09: il buco nero in cima, orizzontale, a un quarto
+     di schermo, con lo schermo intero. VIVO (three.js), non un video: vedi
+     assets/gargantua/fascia.js. L'immagine sotto al canvas e' il ripiego
+     senza WebGL e il fotogramma che si vede mentre le texture si calcolano. -->
+<section id="gargantua" class="gargantua" aria-label="Gargantua, a black hole rendered live in your browser">
+  <img class="garg-img" src="assets/gargantua/gargantua-fermo.jpg" width="1280" height="480"
+       alt="" decoding="async">
+  <canvas aria-hidden="true"></canvas>
+  <p class="garg-dida">Gargantua <span><span class="garg-live">&middot; rendered live </span>&middot; light bent by general relativity</span></p>
+  <button type="button" class="garg-pieno" aria-pressed="false" aria-controls="gargantua">
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M1.5 5.5v-4h4M10.5 1.5h4v4M14.5 10.5v4h-4M5.5 14.5h-4v-4"/></svg>
+    <span class="garg-etichetta">Full screen</span>
+  </button>
+  <button type="button" class="garg-chiudi" aria-label="Close full screen" hidden>
+    <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M3 3l10 10M13 3L3 13"/></svg>
+  </button>
+</section>
 
 <header class="topbar">
   <a class="wordmark" href="#top">
@@ -31,7 +64,6 @@
     <a href="#made">Made here</a>
     <a href="#shortform">Short-form</a>
     <a href="#services">Services</a>
-    <a href="#shop">Shop</a>
     <a class="nav-cta" href="#contact">Start a project</a>
   </nav>
 </header>
@@ -174,36 +206,16 @@
     </ol>
   </section>
 
-  <!-- ============================ SHOP ============================ -->
-  <section id="shop" class="band">
-    <div class="head">
-      <h2>Off the shelf</h2>
-      <p>Things you can download now, without a brief and without waiting for us.</p>
-    </div>
-    <div class="grid grid-shop">
-      <article class="prod">
-        <h3>Low-End Cinematic Toolkit</h3>
-        <p class="prod-line">46 impacts, beds and risers · 48&nbsp;kHz / 24-bit WAV</p>
-        <p>Synthesised from scratch with DSP code, not sampled and not AI-generated, so there is no
-          licence chain and no Content ID risk. Every file ships with its integrated loudness and the
-          exact instant the sound arrives, so you put that instant on the cut and the hit lands on
-          the frame.</p>
-        <p class="buy"><span class="tag">€19</span>
-          <a class="btn btn-gold" href="https://leoneawakens.gumroad.com/l/low-end-cinematic-toolkit">Buy on Gumroad</a>
-          <a class="btn btn-line" href="https://payhip.com/b/gEdCk">Buy on Payhip</a></p>
-      </article>
-      <article class="prod">
-        <h3>Free Impacts &amp; Risers</h3>
-        <p class="prod-line">10 sounds from the toolkit · pay what you want</p>
-        <p>The starter pack. Same synthesis, same measurements, same licence — take it and use it in
-          commercial work. It exists so you can hear what the full toolkit sounds like in your own
-          edit before spending anything.</p>
-        <p class="buy"><span class="tag">Free</span>
-          <a class="btn btn-gold" href="https://leoneawakens.gumroad.com/l/free-impacts-risers">Get it on Gumroad</a>
-          <a class="btn btn-line" href="https://payhip.com/b/LQZ1R">Get it on Payhip</a></p>
-      </article>
-    </div>
-  </section>
+  <!-- ============================ SHOP ============================ ==========
+       Tolta il 09/09/2026. Ci stavano i due pacchetti di effetti sonori —
+       «Low-End Cinematic Toolkit» (€19) e «Free Impacts & Risers» — fatti coi
+       suoni sintetizzati che il 08/09 sono stati banditi (18 su 46 hanno oltre
+       il 25% dell'energia sotto i 45 Hz: su un altoparlante piccolo escono come
+       vento sul microfono), e che stanno uscendo dalla vendita su Gumroad e
+       Payhip. Un ripiano vuoto non e' una vetrina: la sezione e la voce «Shop»
+       del menu tornano quando ci sono i pack nuovi. Le regole CSS `.grid-shop`
+       e `.prod` restano in styles.css, pronte.
+       ======================================================================= -->
 
   <!-- ============================ ABOUT ============================ -->
   <section id="about" class="band">
@@ -235,9 +247,8 @@
     <p class="mail">
       <a href="mailto:wangelowdwd@gmail.com?subject=Project%20enquiry%20%E2%80%94%20Leone%20Awakens%20Studio&amp;body=What%20I%20need%3A%0AFootage%20or%20reference%20link%3A%0ADeadline%3A%0ABudget%3A%0A">wangelowdwd@gmail.com</a>
     </p>
-    <p class="note">Shops: <a href="https://leoneawakens.gumroad.com">Gumroad</a> and
-      <a href="https://payhip.com/LeoneAwakens">Payhip</a>. Stock listings on Adobe&nbsp;Stock,
-      Pond5 and Storyblocks are in review. Fiverr and Upwork are opening shortly.</p>
+    <p class="note">Stock listings on Adobe&nbsp;Stock, Pond5 and Storyblocks are in review.
+      Fiverr and Upwork are opening shortly.</p>
   </section>
 
 </main>
@@ -249,6 +260,7 @@
     when you choose a clip.</p>
 </footer>
 
-<script src="assets/main.js?v=7"></script>
+<script src="assets/main.js?v=9"></script>
+<script type="module" src="assets/gargantua/fascia.js?v=1"></script>
 </body>
 </html>

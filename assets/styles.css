@@ -82,6 +82,104 @@ a:hover { color: #E5B85F; }
 }
 .skip:focus { left: 12px; top: 12px; }
 
+/* ------------------------------------------------------------ gargantua -- */
+/* La fascia in cima (ordine di Angelo, 19/09): il buco nero VIVO, largo
+   quanto la pagina e alto un quarto di schermo. E' un'AGGIUNTA: sotto, la
+   pagina approvata resta com'era. Il fondo #04050A e' quello del render
+   (lo sfondo della scena del file definitivo), non --void: e' spazio, e
+   l'ultima striscia sfuma nel fondo della pagina invece di finire su un bordo.
+   Nella fascia il canvas non cattura il tocco — lo scroll ci passa sopra; a
+   schermo intero si trascina per girare attorno al disco. */
+.gargantua {
+  position: relative;
+  height: 25vh; height: 25svh;
+  min-height: 150px;
+  background: #04050A;
+  overflow: hidden;
+}
+.gargantua canvas,
+.gargantua .garg-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block; max-width: none;
+}
+/* l'immagine ferma: tutta dentro (contain), con i lati che sfumano nel buio */
+.gargantua .garg-img {
+  object-fit: contain;
+  -webkit-mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+          mask-image: linear-gradient(to right, transparent, #000 14%, #000 86%, transparent);
+}
+.gargantua canvas { opacity: 0; transition: opacity 0.9s ease; }
+.gargantua.garg-vivo canvas { opacity: 1; }
+.gargantua.garg-fermo canvas { display: none; }
+.gargantua::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 16%;
+  background: linear-gradient(to bottom, rgba(9, 10, 4, 0), var(--void));
+  pointer-events: none; z-index: 1;
+}
+
+.garg-dida {
+  position: absolute; left: var(--gut); bottom: 12px; z-index: 2;
+  margin: 0;
+  font-variation-settings: "wdth" 88, "wght" 500;
+  font-size: var(--step-1);
+  color: var(--stone);
+  pointer-events: none;
+}
+.garg-dida span { color: var(--stone-dim); }
+.garg-fermo .garg-live { display: none; }   /* ferma, «rendered live» sarebbe falso */
+
+.garg-pieno {
+  position: absolute; right: var(--gut); bottom: 10px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 13px;
+  border: 1px solid rgba(230, 227, 210, 0.3);
+  border-radius: 2px;
+  background: rgba(9, 10, 4, 0.55);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--cream);
+  font: inherit;
+  font-size: 0.8rem;
+  font-variation-settings: "wdth" 96, "wght" 540;
+  line-height: 1.2;
+  cursor: pointer;
+  transition: border-color 0.18s ease, color 0.18s ease;
+}
+.garg-pieno:hover { border-color: var(--gold); color: var(--gold); }
+.garg-pieno svg,
+.garg-chiudi svg {
+  width: 14px; height: 14px; flex: none;
+  fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: round;
+}
+
+.garg-chiudi {
+  position: absolute; z-index: 3;
+  top: max(14px, env(safe-area-inset-top)); right: max(14px, env(safe-area-inset-right));
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+  padding: 0;
+  border: 1px solid rgba(230, 227, 210, 0.3);
+  border-radius: 50%;
+  background: rgba(9, 10, 4, 0.55);
+  color: var(--cream);
+  cursor: pointer;
+}
+.garg-chiudi:hover { border-color: var(--gold); color: var(--gold); }
+.garg-chiudi[hidden] { display: none; }
+
+/* schermo intero: vero (Fullscreen API) o finto (iPhone, niente API sugli elementi) */
+.gargantua:fullscreen { width: 100vw; height: 100vh; min-height: 0; }
+.gargantua.pieno-finto {
+  position: fixed; inset: 0; z-index: 200;
+  width: 100vw; height: 100vh; height: 100dvh; min-height: 0;
+}
+html.garg-bloccato, html.garg-bloccato body { overflow: hidden; }
+.gargantua.pieno::after { display: none; }
+.gargantua.pieno canvas { touch-action: none; cursor: grab; }
+.gargantua.pieno canvas:active { cursor: grabbing; }
+.gargantua.pieno .garg-pieno { bottom: max(14px, env(safe-area-inset-bottom)); }
+.gargantua.pieno .garg-dida { bottom: max(16px, env(safe-area-inset-bottom)); }
+
 /* --------------------------------------------------------------- topbar -- */
 .topbar {
   position: sticky; top: 0; z-index: 40;
@@ -475,6 +573,8 @@ footer .quiet { max-width: 74ch; color: #4A473D; }
   .row-price { text-align: left; }
   .row-price .extra { margin-left: 0; }
   .strip button img { width: 54px; height: 30px; }
+  .garg-dida span { display: none; }
+  .garg-pieno { padding: 10px 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -1,2 +1,9 @@
 # strumenti locali: non devono finire su GitHub Pages
 *.bat
+
+# note di lavoro e archivi: stanno in G:/A.T/state/vendita/sito, mai nel repository pubblico
+CONSEGNA*.md
+*_archivio/
+_lav/
+*.txt
+!robots.txt
