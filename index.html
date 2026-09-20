@@ -60,6 +60,7 @@
     <span>Leone Awakens Studio</span>
   </a>
   <nav aria-label="Sections">
+    <a href="#reel">Reel</a>
     <a href="#loops">Loops</a>
     <a href="#made">Made here</a>
     <a href="#shortform">Short-form</a>
@@ -93,6 +94,30 @@
       <ul class="strip" id="strip" aria-label="Choose a loop"></ul>
       <div class="readout" id="readout" aria-live="polite"></div>
     </div>
+  </section>
+
+  <!-- ============================ THE REEL =============================
+       20/09: lo showreel approvato il 19/09, 56 s. Sta QUI, subito sotto il
+       player, perche' e' la sintesi: chi non scorre la pagina ha comunque
+       visto tutto. Non parte da solo e non e' muto — `controls`, niente
+       `autoplay`: un reel e' fatto di musica e tagli, e un video che parte
+       da solo con l'audio e' il modo piu' rapido per farsi chiudere la
+       scheda. `preload="none"`: 3,8 MB non si scaricano a chi non li chiede. -->
+  <section id="reel" class="band">
+    <div class="head">
+      <h2>Fifty-six seconds</h2>
+      <p>The whole studio in one pass: the loops, the animated explainers, the vertical cuts
+        and the numbers they produced. Press play &mdash; the sound is half the work.</p>
+    </div>
+    <figure class="cell reel-cell">
+      <div class="fr">
+        <video class="reel-video"
+               src="assets/work/showreel.mp4"
+               poster="assets/work/showreel.jpg"
+               controls playsinline preload="none"
+               aria-label="Leone Awakens Studio showreel, 56 seconds"></video>
+      </div>
+    </figure>
   </section>
 
   <!-- ============================ THE LOOPS ============================ -->

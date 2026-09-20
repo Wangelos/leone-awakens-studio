@@ -380,6 +380,15 @@ html.garg-bloccato, html.garg-bloccato body { overflow: hidden; }
 .ratio-v  .fr { aspect-ratio: 9 / 16; }
 .ratio-s  .fr { aspect-ratio: 1 / 1; }
 
+/* --------------------------------------------------------------- il reel --
+   Una cella sola, larga, col suo 16:9 e i comandi veri. `cursor: pointer`
+   della cella qui non serve: non si accende al passaggio del mouse, si
+   guarda. E `object-fit: contain` invece di `cover` — un reel non si
+   ritaglia mai, nemmeno di un pixel: le scritte stanno sui bordi. */
+.reel-cell { max-width: 1100px; margin-inline: auto; }
+.reel-cell .fr { aspect-ratio: 16 / 9; cursor: default; }
+.reel-cell .fr video { object-fit: contain; }
+
 /* Il segno di riproduzione: piccolo, in basso a sinistra, non un disco in
    mezzo all'oggetto. Al centro copriva proprio la cosa che la cella deve far
    vedere — e con la riproduzione al passaggio del mouse serve solo a dire che
