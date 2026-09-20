@@ -589,3 +589,18 @@ footer .quiet { max-width: 74ch; color: #4A473D; }
 @media (prefers-reduced-motion: reduce) {
   * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
 }
+
+
+/* ------------------------------------------------------- pagine di testo --
+   Privacy e Terms: una colonna sola, la misura di riga del resto del sito.
+   Nessun colore nuovo, nessun carattere nuovo — sono le stesse variabili. */
+.prose { max-width: 68ch; }
+.prose h3 {
+  margin: clamp(34px, 4vw, 52px) 0 10px;
+  font-variation-settings: "wdth" 112, "wght" 560;
+  font-size: var(--step1);
+  color: var(--cream);
+}
+.prose h3:first-child { margin-top: 0; }
+.prose p { margin: 0 0 14px; color: var(--stone); }
+.prose a { color: var(--gold); }
